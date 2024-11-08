@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="login-container container mt-5">
+      
+        <div class="row">
+            <div class="col">
+                <img src="{% static "img/logo_light.png" %}" alt="" width="150">
+            </div>
+        </div>
+        <!-- Formulário de Login -->
+        <form action="{% url "login" %}" method="post">
+
+            {% csrf_token %}
+            <div class="mb-3">
+                <input type="email" class="form-control" id="email" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" id="password" placeholder="Senha" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Entrar</button>
+    
+            <div class="mt-3">
+                <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+  
