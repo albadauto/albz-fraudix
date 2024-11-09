@@ -1,7 +1,57 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Olá mundo</h1>
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col">
+            <h1>Boa noite Admin!</h1>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col bg-light p-5 text-center m-3">
+        <h3>Alertas Graves</h3>
+            <div class="alert alert-danger">
+                <p>Não há alertas para ser visualizados</p>
+            </div>
+        </div>
+
+        <div class="col bg-light p-5 text-center m-3">
+            <h3>Alertas Médios</h3>
+                <div class="alert alert-warning">
+                    <p>Não há alertas para ser visualizados</p>
+                </div>
+            </div>
+
+            <div class="col bg-light p-5 text-center m-3">
+                <h3>Alertas Leves</h3>
+                    <div class="alert alert-success">
+                        <p>Não há alertas para ser visualizados</p>
+                    </div>
+           </div>
+    </div>
+
+
+    <div class="row mt-5">
+        <div class="col text-center">
+            <h1>Últimos relatórios</h1>
+        </div>
+    </div>
+    
+    {% for i in "12345" %}
+    <div class="row mb-3">
+        <div class="col bg-light p-3 border-top border-dark border-5">
+            <p>Foi constatado que o motorista <b>Genivaldo</b> abasteceu 3 vezes nesta semana em média com o valor de 350 reais relatando possível fraude média</p>
+        </div>
+    </div>
+    {% endfor %}
+  
+    
+
+  
+</div>
 
 
 
