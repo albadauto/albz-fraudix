@@ -10,7 +10,7 @@
     <title>Fraudix</title>
 </head>
 <body data-bs-theme="light">
-{% if True %}
+{% if request.user.is_authenticated %}
 <div class="wrapper">
   <aside id="sidebar">
       <div class="d-flex">
@@ -24,8 +24,8 @@
       <ul class="sidebar-nav">
           <li class="sidebar-item">
               <a href="{% url "historico_home" %}" class="sidebar-link">
-                  <i class="lni lni-user"></i>
-                  <span>Cadastro de histórico</span>
+                <i class="bi bi-book"></i>
+                <span>Cadastro de histórico</span>
               </a>
           </li>
           <li class="sidebar-item">
@@ -86,8 +86,8 @@
           </li>
       </ul>
       <div class="sidebar-footer">
-          <a href="#" class="sidebar-link">
-              <i class="lni lni-exit"></i>
+          <a href="{% url "logout" %}" class="sidebar-link">
+            <i class="bi bi-box-arrow-left"></i>
               <span>Logout</span>
           </a>
       </div>
