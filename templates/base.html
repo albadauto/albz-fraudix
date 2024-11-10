@@ -30,10 +30,18 @@
           </li>
           <li class="sidebar-item">
               <a href="#" class="sidebar-link">
-                  <i class="lni lni-agenda"></i>
-                  <span>Task</span>
+                <i class="bi bi-list-columns-reverse"></i>
+                <span>Relatórios</span>
               </a>
           </li>
+
+          <li class="sidebar-item">
+            <a href="{% url "motorista_home" %}" class="sidebar-link">
+                <i class="bi bi-people-fill"></i>
+              <span>Motoristas</span>
+            </a>
+        </li>
+          <!--
           <li class="sidebar-item">
               <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                   data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
@@ -84,13 +92,16 @@
                   <span>Setting</span>
               </a>
           </li>
+          -->
       </ul>
+      
+      
       <div class="sidebar-footer">
-          <a href="{% url "logout" %}" class="sidebar-link">
-            <i class="bi bi-box-arrow-left"></i>
-              <span>Logout</span>
-          </a>
-      </div>
+        <a href="{% url "logout" %}" class="sidebar-link">
+          <i class="bi bi-box-arrow-left"></i>
+            <span>Logout</span>
+        </a>
+    </div>
   </aside>
  
 

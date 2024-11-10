@@ -20,8 +20,10 @@
                 <input type="password" class="form-control" id="password" placeholder="Senha" required name="password">
             </div>
 
-            
-            <button type="submit" class="btn btn-primary">Entrar</button>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary ">Entrar</button>
+
+              </div>
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}">{{ message }}</div>

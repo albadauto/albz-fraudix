@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('Login.urls')),
     path('home/', include('home.urls')),
     path('historico/', include('Historico.urls')),
+    path('motorista/', include('Motorista.urls')),
     
 ]

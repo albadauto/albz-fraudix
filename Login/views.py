@@ -5,8 +5,8 @@ from django.contrib.auth import login as login_user, logout as logout_user
 from django.contrib import messages
 
 def login_home(request):
+    logout_user(request)
     return render(request, 'login_home.html')
-
 
 def login(request):
     if request.method == 'POST':
