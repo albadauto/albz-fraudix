@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="bg-white rounded shadow p-4">
+        <div class="container">
+            
+            <div class="text-center">
+                <h1>Cadastro de motoristas</h1>
+            </div>
+
+        </div>
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="bi bi-plus-circle"></i>
+           Novo Cadastro
+        </button>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Placa do veículo</th>
+                <th scope="col">CNH</th>
+                <th scope="col">Pessoa Física</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for motorista in motoristas %}
+                <tr>
+                  <th scope="row">{{ motorista.id }}</th>
+                  <td>{{ motorista.nome_motorista }}</td>
+                  <td>{{ motorista.placa_veiculo }}</td>
+                  <td>
+                  {% if motorista.cnh %}
+                    {{ motorista.cnh }}
+
+                  {% else %}
+                    Não se aplica
+                  {% endif %}
+                  </td>
+                  <td>{{ motorista.pessoa_fisica|yesno:"Sim, Não" }}</td>
+
+                </tr>
+              {% endfor %}
+             
+             
+            </tbody>
+          </table>
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de motoristas</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{% url "inserir_motorista" %}" method="POST">
+
+      <div class="modal-body">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="nome">
+                <label for="floatingInput">Nome do motorista</label>
+              </div>
+              
+            </div>
+            <div class="col">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="placa">
+                <label for="floatingInput">Placa</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-floating">
+                <select class="form-select" id="floatingSelect" aria-label="Tipo de pessoa" name="tipo_pessoa">
+                  <option selected></option>
+                  <option value="Física">Física</option>
+                  <option value="Jurídica">Juŕidica</option>
+                </select>
+                <label for="floatingSelect">Tipo de pessoa</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" aria-label="CNH" name="cnh">
+                <label for="floatingInput">CNH</label>
+              </div>
+          </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </form>
+
+     
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

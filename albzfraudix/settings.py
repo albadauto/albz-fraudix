@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'Login',
-    'Historico',
-    'Motorista'
+    'login',
+    'historico',
+    'motorista'
 ]
 
 MIDDLEWARE = [
