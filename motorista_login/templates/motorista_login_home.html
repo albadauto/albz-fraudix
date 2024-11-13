@@ -1,9 +1,106 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
+  <div class="bg-white rounded shadow p-4">
+    <div class="container">
+      <div class="text-center">
+        <h1>Cadastro de Login de Motoristas no Front</h1>
+      </div>
+    </div>
+    {% if messages %}
+      <div class="row text-center">
+        {% for message in messages %}
+          {% if message.tags == "error" %}
+          <div class="col alert alert-danger text-center">{{ message }}</div>
+          {% else %}
+            <div class="col alert alert-{{ message.tags }} text-center">{{ message }}</div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+<form action="{% url "inserir_alterar_motorista_login" %}" method="post">
+  {% csrf_token %}
+    <div class="row">
+      <div class="col-1">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="id" placeholder="EX: JOAOBATISTA" name="id" readonly/>
+          <label for="floatingInput">ID</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating">
+          <select class="form-select" id="motorista" aria-label="Motorista" name="motorista" >
+            <option selected>Selecione um motorista</option>
+            {% for motorista in motoristas %}
+              <option value="{{ motorista.id }}">{{ motorista.nome_motorista }}</option>
+            {% endfor %}
+          </select>
+          <label for="floatingSelect">Motorista</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="usuario" placeholder="EX: JOAOBATISTA" name="usuario"/>
+          <label for="floatingInput">Usuário</label>
+        </div>
+      </div>
+    </div>
 
-<h1>Motorista Login</h1>
+    <div class="row">
+      <div class="col">
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="senha" placeholder="EX: JOAOBATISTA" name="senha"/>
+            <label for="floatingInput">Senha</label>
+          </div>
+      </div>
+      <div class="col">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="celular" placeholder="EX: JOAOBATISTA" name="telefone"/>
+            <label for="floatingInput">Celular</label>
+          </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-around mb-5">
+      <div class="">
+        <button type="submit" class="btn btn-primary" id="btn_cadastrar">Cadastrar</button>
+      </div>
+      <div class="">
+        <button type="submit" class="btn btn-warning" disabled id="btn_alterar">Alterar</button>
+      </div>
+    </div>
+  </form>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Nome do motorista</th>
+          <th scope="col">Placa</th>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for motorista_login in motoristas_login %}
+        <tr>
+          <td>{{ motorista_login.id }}</td>
+          <td>{{ motorista_login.usuario }}</td>
+          <td>{{ motorista_login.telefone }}</td>
+          <td>{{ motorista_login.motorista.nome_motorista }}</td>
+          <td>{{ motorista_login.motorista.placa_veiculo }}</td>
+          <td><a href="{% url "excluir_motorista_login" id=motorista_login.id %}" class="btn btn-danger"><i class="bi bi-trash"></i></a></td>
+          <td><a onclick="buscar_preencher({{ motorista_login.id }})" class="btn btn-warning"><i class="bi bi-pencil"></i></a></td>
 
-{% endblock content %}
 
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
 
+  
+  </div>
+{% endblock %}

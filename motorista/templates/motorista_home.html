@@ -18,9 +18,16 @@
           {% if messages %}
           <div class="row text-center">
             {% for message in messages %}
-            <div class="col alert alert-{{ message.tags }}">
-              {{ message }}
-            </div>
+              {% if message.tags == 'error' %}
+                <div class="col alert alert-danger">
+                  {{ message }}
+                </div>
+              {% else %}
+                <div class="col alert alert-{{ message.tags }}">
+                  {{ message }}
+                </div>
+              {% endif %}
+            
             {% endfor %}
           </div>
         {% endif %}
