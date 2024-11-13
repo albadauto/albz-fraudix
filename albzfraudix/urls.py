@@ -23,5 +23,6 @@ urlpatterns = [
     path('home/', include('home.urls')),
     path('historico/', include('historico.urls')),
     path('motorista/', include('motorista.urls')),
+    path('motorista_login/', include('motorista_login.urls')),
     
 ]

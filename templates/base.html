@@ -36,27 +36,22 @@
           </li>
 
           <li class="sidebar-item">
-            <a href="{% url "motorista_home" %}" class="sidebar-link">
-                <i class="bi bi-people-fill"></i>
-              <span>Motoristas</span>
-            </a>
-        </li>
-          <!--
-          <li class="sidebar-item">
               <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                   data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                  <i class="lni lni-protection"></i>
-                  <span>Auth</span>
+                  <i class="bi bi-people-fill"></i>
+                  <span>Motoristas</span>
               </a>
               <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                   <li class="sidebar-item">
-                      <a href="#" class="sidebar-link">Login</a>
+                      <a href="{% url "motorista_home" %}" class="sidebar-link">Cadastro</a>
                   </li>
                   <li class="sidebar-item">
-                      <a href="#" class="sidebar-link">Register</a>
+                      <a href="{% url "motorista_login_home" %}" class="sidebar-link">Cadastro de login (Front)</a>
                   </li>
               </ul>
           </li>
+
+          <!--
           <li class="sidebar-item">
               <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                   data-bs-target="#multi" aria-expanded="false" aria-controls="multi">

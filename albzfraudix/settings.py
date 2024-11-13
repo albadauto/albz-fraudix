@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'home',
     'login',
     'historico',
-    'motorista'
+    'motorista',
+    'motorista_login'
 ]
 
 MIDDLEWARE = [
